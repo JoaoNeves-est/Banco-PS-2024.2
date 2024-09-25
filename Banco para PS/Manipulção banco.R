@@ -1,6 +1,9 @@
 library(tidyverse)
 library(writexl)
 
+setwd("C:/Users/Faculdade/OneDrive - unb.br/Área de Trabalho/Planilha para PS")
+athlete_events <- read_csv("athlete_events.csv")
+
 data <- athlete_events %>%
   select(Name, #Selecionar as variáveis que vão ser usadas:
          Sex, 
@@ -20,6 +23,10 @@ data <- athlete_events %>%
 
 #Transformar kilogramas em libras.
 data$Weight <- data$Weight * 2.20462262
+
+#Corrigir casos com país-n:
+data <- data %>%
+  mutate(Team = gsub("-\\d+", "", Team))
 
 #Criar bancos separados:
 setwd("C:/Users/Faculdade/OneDrive - unb.br/Área de Trabalho/Planilha para PS")

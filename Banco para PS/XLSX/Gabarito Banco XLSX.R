@@ -2,6 +2,8 @@ library(tidyverse)
 library(readxl)
 
 #Atribuir o ano a cada um dos bancos:
+
+setwd("C:/Users/Faculdade/OneDrive - unb.br/Área de Trabalho/Planilha para PS")
 X2000 <- read_excel("XLSX/Olimpiadas 2000 - 2016 (Verão).xlsx", 
                     sheet = "Sydney")
 X2000$Year <- 2000
@@ -39,5 +41,16 @@ X2016$Height <- as.numeric(X2016$Height)
 #Fazer a junção dos bancos:
 banco_unido <- bind_rows(X2000,X2004,X2008,X2012,X2016)
 
+#Corrigir casos com país-n:
+#banco_unido <- banco_unido %>%
+#  mutate(Team = gsub("-\\d+", "", Team))
+
 #Converter de libras para kilogramas:
 banco_unido$Weight <- banco_unido$Weight / 2.20462262
+
+#Salvar:
+#library(writexl)
+#setwd("C:/Users/Faculdade/OneDrive - unb.br/Área de Trabalho/Planilha para PS/XLSX")
+#write_xlsx(banco_unido, "Gabarito_Banco_XLSX2.xlsx")
+
+#fim :)
