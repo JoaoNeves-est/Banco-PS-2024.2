@@ -18,7 +18,7 @@ data <- athlete_events %>%
          Medal) %>%
   filter(Year %in% c(2000,2004,2008,2012,2016)) %>% #Somente os anos de 2000-2016.
   filter(Season == "Summer") %>% #Somente verão.
-  drop_na(Medal) %>% #Somente medalhistas.
+  #drop.na(Medals) %>% #Somente medalhistas
   select(!Season) #Não será mais necessária.
 
 #Transformar kilogramas em libras.
@@ -31,28 +31,53 @@ data <- data %>%
 #Criar bancos separados:
 setwd("C:/Users/Faculdade/OneDrive - unb.br/Área de Trabalho/Planilha para PS")
 
+#bancos com NA
 Ano2000 <- data %>%
   filter(Year == 2000) %>%
   select(!Year)
-write_xlsx(Ano2000, "2000.xlsx")
+write_xlsx(Ano2000, "2000_NA.xlsx")
 
 Ano2004 <- data %>%
   filter(Year == 2004) %>%
   select(!Year)
-write_xlsx(Ano2004, "2004.xlsx")
+write_xlsx(Ano2004, "2004_NA.xlsx")
 
 Ano2008 <- data %>%
   filter(Year == 2008) %>%
   select(!Year)
-write_xlsx(Ano2008, "2008.xlsx")
+write_xlsx(Ano2008, "2008_NA.xlsx")
 
 Ano2012 <- data %>%
   filter(Year == 2012) %>%
   select(!Year)
-write_xlsx(Ano2012, "2012.xlsx")
+write_xlsx(Ano2012, "2012_NA.xlsx")
 
 Ano2016 <- data %>%
   filter(Year == 2016) %>%
   select(!Year)
-write_xlsx(Ano2016, "2016.xlsx")
+write_xlsx(Ano2016, "2016_NA.xlsx")
 
+# Ano2000 <- data %>%
+#   filter(Year == 2000) %>%
+#   select(!Year)
+# write_xlsx(Ano2000, "2000.xlsx")
+# 
+# Ano2004 <- data %>%
+#   filter(Year == 2004) %>%
+#   select(!Year)
+# write_xlsx(Ano2004, "2004.xlsx")
+# 
+# Ano2008 <- data %>%
+#   filter(Year == 2008) %>%
+#   select(!Year)
+# write_xlsx(Ano2008, "2008.xlsx")
+# 
+# Ano2012 <- data %>%
+#   filter(Year == 2012) %>%
+#   select(!Year)
+# write_xlsx(Ano2012, "2012.xlsx")
+# 
+# Ano2016 <- data %>%
+#   filter(Year == 2016) %>%
+#   select(!Year)
+# write_xlsx(Ano2016, "2016.xlsx")
